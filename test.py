@@ -1,10 +1,7 @@
 import pytesseract as pt
-from cv2 import imread
 
 p = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 img = 'diab_test.png'
-# img = 'test.jpg'
-img = imread(img)
 custom_config = r'--oem 3 --psm 6'
 pt.pytesseract.tesseract_cmd = p
 
