@@ -10,8 +10,9 @@ cap = cv.VideoCapture('http://192.168.0.102:8080/video')
 pytesseract.pytesseract.tesseract_cmd = p
 while(True):
     ret, frame = cap.read()
-    img = cv.resize(frame, (480,360))
-    h, w, c = img.shape
+    img = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
+    img = cv.resize(img, (480,360))
+    h, w = img.shape
     boxes = pytesseract.image_to_boxes(img, config=custom_config)
     for b in boxes.splitlines():
         b = b.split(' ')
