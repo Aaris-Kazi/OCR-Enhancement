@@ -1,8 +1,8 @@
 # import pytesseract as pt
 
 p = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
-# img = 'diab_test.png'
 custom_config = r'--oem 3 --psm 6'
+# img = 'diab_test.png'
 # pt.pytesseract.tesseract_cmd = p
 
 # text =pt.image_to_string(img, config= custom_config)
