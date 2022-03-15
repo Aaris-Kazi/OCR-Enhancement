@@ -39,7 +39,8 @@ if name == 'posix':
     text = pytesseract.image_to_string(img, config=custom_config) 
     for b in boxes.splitlines():
         b = b.split(' ')
-        img = cv2.rectang
+        img = cv2.rectangle(img, (int(b[1]), h - int(b[2])), (int(b[3]), h - int(b[4])), (0, 255, 0), 2)
+
 else:
     p = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
     pytesseract.pytesseract.tesseract_cmd = p
