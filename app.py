@@ -10,24 +10,29 @@
 # if cv.waitKey() & 0xff == 27: 
 #     quit()
 
-from cv2 import COLOR_BGR2GRAY, VideoCapture, destroyAllWindows, imshow, putText, cvtColor, rectangle, resize, waitKey 
+from cv2 import COLOR_BGR2GRAY, VideoCapture, destroyAllWindows, imshow, cvtColor, rectangle, resize, waitKey 
+from pytesseract import image_to_boxes, image_to_string
 import pytesseract
 from fps import showfps
 from time import time
+from os import name
 
-p = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 custom_config = r'--oem 3 --psm 6'
 prev = time()
 fps = 0.0
 cap = VideoCapture('http://192.168.0.102:8080/video')
-pytesseract.pytesseract.tesseract_cmd = p
+if name == 'posix':
+    pass
+else:
+    p = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
+    pytesseract.pytesseract.tesseract_cmd = p
 while(True):
     ret, frame = cap.read()
-    prev, fps = showfps(frame, prev, fps)
     img = cvtColor(frame, COLOR_BGR2GRAY)
+    prev, fps = showfps(frame, prev, fps)
     img = resize(img, (480,360))
     h, w = img.shape
-    boxes = pytesseract.image_to_boxes(img, config=custom_config)
+    boxes = image_to_boxes(img, config=custom_config)
     for b in boxes.splitlines():
         b = b.split(' ')
         img = rectangle(img, (int(b[1]), h - int(b[2])), (int(b[3]), h - int(b[4])), (0, 255, 0), 2)
