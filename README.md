@@ -8,7 +8,7 @@
     Test Name: Diabetes
     Bio Chemical Test
     No. of Pregnancies 6
-    Glucose Level 14s
+    Glucose Level 148
     Blood Pressure 2
     ‘Skin Thickness 35
     Insulin 0
@@ -21,3 +21,6 @@
 
 ### Gen2 Image
 <img src= "https://github.com/Aaris-Kazi/OCR-Enhancement/blob/main/gen2.png">
+
+### Gen2 Image
+<img src ="https://github.com/Aaris-Kazi/OCR-Enhancement/blob/main/gen3.png">
