@@ -22,5 +22,6 @@
 ### Gen2 Image
 <img src= "https://github.com/Aaris-Kazi/OCR-Enhancement/blob/main/gen2.png">
 
-### Gen2 Image
-<img src ="https://github.com/Aaris-Kazi/OCR-Enhancement/blob/main/gen3.png">
+### Gen 7 Image
+with 98% accuracy plotting
+<img src ="https://github.com/Aaris-Kazi/OCR-Enhancement/blob/main/gen7.png">
