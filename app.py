@@ -20,7 +20,7 @@ from os import name
 custom_config = r'--oem 3 --psm 6'
 prev = time()
 fps = 0.0
-cap = VideoCapture('http://192.168.0.102:8080/video')
+cap = VideoCapture('http://192.168.0.101:8080/video')
 if name == 'posix':
     pass
 else:

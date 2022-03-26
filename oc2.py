@@ -61,8 +61,10 @@ def create_boxes(boxes):
                 filtering(x1,y1,x2,y2)
                 
                 # print('negative')
-                x1, x2 =[],[]
-                y1, y2 =[],[]
+                x1.clear()
+                x2.clear()
+                y1.clear()
+                y2.clear()
         except Exception as e:
             x1.append(bx1[i])
             y1.append(by1[i])
@@ -81,7 +83,10 @@ while(True):
     for i in range(len(ax1)):
         rectangle(img, (ax1[i],  ay1[i]), (ax2[i], ay2[i]), (0, 255, 0), 2)
     
-    ax1,ax2,ay1,ay2 =[],[],[],[] 
+    ax1.clear()
+    ax2.clear()
+    ay1.clear()
+    ay2.clear() 
         # img = rectangle(img, (int(b[1]), h - int(b[2])), (int(b[3]), h - int(b[4])), (0, 255, 0), 2)
  
     imshow('frame',img)
