@@ -1,12 +1,12 @@
 from os import name
-from cv2 import COLOR_BGR2GRAY, VideoCapture, cvtColor, resize, rectangle, imshow, waitKey, destroyAllWindows
+from cv2 import COLOR_BGR2GRAY, VideoCapture, cvtColor, resize, rectangle, imshow, waitKey, destroyAllWindows, CAP_DSHOW
 from numpy import array, insert, delete
 import numpy as np
 from pytesseract import image_to_boxes
 
 
 custom_config = r'--oem 3 --psm 6'
-cap = VideoCapture(0)
+cap = VideoCapture(0, CAP_DSHOW)
 count = 0
 ax1,ax2,ay1,ay2 = array([]),array([]),array([]),array([])
 
@@ -32,15 +32,15 @@ def deletion(x1,y1,x2,y2):
         y2 = delete(y2, i)
     return x1,y1,x2,y2
 
-def create_boxes(boxes,ax1,ax2,ay1,ay2,count):  
+def create_boxes(boxes,ax1,ax2,ay1,ay2,count,h):  
     bx1,bx2,by1,by2 =array([]),array([]),array([]),array([]) 
     i = 0
     for b in boxes.splitlines():
         b = b.split(' ')
         bx1 = insert(bx1, len(bx1), int(b[1]))
-        by1 = insert(by1, len(by1), int(b[2]))
+        by1 = insert(by1, len(by1), h - int(b[2]))
         bx2 = insert(bx2, len(bx2), int(b[3]))
-        by2 = insert(by2, len(by2), int(b[4]))
+        by2 = insert(by2, len(by2), h - int(b[4]))
         # bx1.append(int(b[1]))
         # bx2.append(int(b[3]))
         # by1.append(h - int(b[2]))
@@ -98,7 +98,7 @@ while(True):
     img = resize(img, (480,360))
     h, w = img.shape
     boxes = image_to_boxes(img, config=custom_config)
-    create_boxes(boxes,ax1,ax2,ay1,ay2,count)
+    create_boxes(boxes,ax1,ax2,ay1,ay2,count,h)
     for i in range(len(ax1)):
         rectangle(img, (ax1[i],  ay1[i]), (ax2[i], ay2[i]), (0, 255, 0), 2)
     ax1,ay1,ax2,ay2 = deletion(ax1,ay1,ax2,ay2)
