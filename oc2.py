@@ -1,5 +1,5 @@
 from os import name
-from cv2 import COLOR_BGR2GRAY, VideoCapture, cvtColor, resize, rectangle, imshow, waitKey, destroyAllWindows
+from cv2 import COLOR_BGR2GRAY, VideoCapture, cvtColor, resize, rectangle, imshow, waitKey, destroyAllWindows, CAP_DSHOW
 import numpy as np
 from pytesseract import image_to_boxes
 
@@ -17,7 +17,8 @@ else:
     p = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
     pt.pytesseract.tesseract_cmd = p
 
-cap = VideoCapture('http://192.168.0.101:8080/video')
+# cap = VideoCapture('http://192.168.0.101:8080/video')
+cap = VideoCapture(0, CAP_DSHOW)
 def filtering(x1,y1,x2,y2):
     x1 = np.array(x1)
     y1 = np.array(y1)
